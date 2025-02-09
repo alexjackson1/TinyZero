@@ -59,7 +59,11 @@ if __name__ == "__main__":
     def make_map_fn(split: str):
         def process_fn(example: Example, idx: int):
             question = make_prefix(example, template_type=args.template_type)
-            solution = {"target": example["target"], "numbers": example["starting"]}
+            solution = {
+                "target": example["target"],
+                "starting": example["starting"],
+                "closest": example["closest"],
+            }
             data = {
                 "data_source": data_source,
                 "prompt": [{"role": "user", "content": question}],
